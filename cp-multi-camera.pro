@@ -1,4 +1,7 @@
-QT -= gui
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += multimedia multimediawidgets
 
 TEMPLATE = lib
 DEFINES += CPMULTICAMERA_LIBRARY
@@ -14,6 +17,7 @@ SOURCES += \
 
 HEADERS += \
     cp-multi-camera_global.h \
+    cpcamera-interface.h \
     cpcamera.h
 
 TRANSLATIONS += \
