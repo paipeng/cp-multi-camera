@@ -2,7 +2,7 @@
 
 
 
-CPCamera::CPCamera(int cameraId, CPCameraInterface* cameraInterface): cameraId(cameraId) {
+CPCamera::CPCamera(int cameraId, CPCameraInterface* cameraInterface): cameraId(cameraId), autoCapture(false) {
     this->cameraInterface = cameraInterface;
 }
 
@@ -146,12 +146,25 @@ void CPCamera::readyForCapture(bool ready) {
         m_isCapturingImage = false;
     }
     this->cameraInterface->cameraReadyForCapture(this->cameraId, ready);
+    if (ready && autoCapture) {
+        takeImage();
+    }
 }
 
 void CPCamera::imageSaved(int id, const QString &fileName) {
     Q_UNUSED(id);
     qDebug("imageSaved: %s", (const char*)(fileName.data()));
     m_isCapturingImage = false;
+}
+
+bool CPCamera::getAutoCapture() const
+{
+    return autoCapture;
+}
+
+void CPCamera::setAutoCapture(bool newAutoCapture)
+{
+    autoCapture = newAutoCapture;
 }
 
 
