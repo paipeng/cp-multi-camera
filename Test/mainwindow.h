@@ -29,6 +29,10 @@ private:
     void cameraReadyForCapture(int cameraId, bool ready) override;
 
 private:
+    void displayViewfinder(int cameraId);
+    void displayCapturedImage(int cameraId);
+
+private:
     Ui::MainWindow *ui;
     CPCamera camera;
 

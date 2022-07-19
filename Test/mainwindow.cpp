@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     initCameras();
     ui->statusbar->showMessage(tr("app_info"));
 
+    displayCapturedImage(0);
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +63,31 @@ const QCameraInfo MainWindow::getSelectedCameraInfo(int source) {
     return defaultCameraInfo;
 }
 void MainWindow::cameraState(int cameraId, int state) {
-
+    qDebug() << "cameraState: " << cameraId << " state: " << state;
+    if (state == 0) {
+        if (cameraId == 0) {
+            ui->cameraPushButton->setText(tr("start"));
+        } else {
+            ui->cameraPushButton->setText(tr("start"));
+        }
+        displayCapturedImage(cameraId);
+    } else if (state == 1) {
+        if (cameraId == 0) {
+            ui->cameraPushButton->setText(tr("start"));
+            cameraAutoCapture = true;
+        } else {
+            ui->cameraPushButton->setText(tr("start"));
+            cameraAutoCapture = true;
+        }
+        displayCapturedImage(cameraId);
+    } else if (state == 2) {
+        if (cameraId == 0) {
+            ui->cameraPushButton->setText(tr("stop"));
+        } else {
+            ui->cameraPushButton->setText(tr("stop"));
+        }
+        displayViewfinder(cameraId);
+    }
 }
 
 void MainWindow::processCapturedImage(int cameraId, const QImage& img) {
@@ -70,5 +95,33 @@ void MainWindow::processCapturedImage(int cameraId, const QImage& img) {
 }
 
 void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
+    qDebug() << "cameraReadyForCapture: " << cameraId << " state: " << ready;
 
+    if (ready) {
+        if (cameraId == 0) {
+            camera.takeImage();
+        } else {
+            if (cameraAutoCapture) {
+                cameraAutoCapture = false;
+                camera.takeImage();
+            }
+        }
+    }
+}
+
+
+void MainWindow::displayViewfinder(int cameraId) {
+    if (cameraId == 0) {
+        ui->cameratackedWidget->setCurrentIndex(0);
+    } else {
+        ui->cameratackedWidget->setCurrentIndex(0);
+    }
+}
+
+void MainWindow::displayCapturedImage(int cameraId) {
+    if (cameraId == 0) {
+        ui->cameratackedWidget->setCurrentIndex(1);
+    } else {
+        ui->cameratackedWidget->setCurrentIndex(1);
+    }
 }

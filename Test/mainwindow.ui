@@ -48,7 +48,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QStackedWidget" name="stackedWidget">
+          <widget class="QStackedWidget" name="cameratackedWidget">
            <widget class="QWidget" name="page">
             <widget class="CPCameraViewfinder" name="cameraViewfinder">
              <property name="geometry">
