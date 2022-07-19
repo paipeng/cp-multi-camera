@@ -20,3 +20,9 @@ void CPCameraViewfinder::paintEvent(QPaintEvent* event) {
     QRect rect( 10, 10, 200, 200);
     painter.drawRect(rect);
 };
+
+
+void CPCameraViewfinder::setText(const QString &text) {
+
+}
+
