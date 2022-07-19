@@ -50,7 +50,7 @@
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <widget class="QWidget" name="page">
-            <widget class="QLabel" name="label_3">
+            <widget class="CPCameraViewfinder" name="label_3">
              <property name="geometry">
               <rect>
                <x>3</x>
@@ -75,7 +75,13 @@
               </rect>
              </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources.qrc">:/images/icon/images/icon.jpg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
              </property>
             </widget>
            </widget>
@@ -127,6 +133,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CPCameraViewfinder</class>
+   <extends>QLabel</extends>
+   <header location="global">../cpcameraviewfinder.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
