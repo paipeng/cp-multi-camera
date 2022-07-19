@@ -5,7 +5,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow), camera(0, this),cameraAutoCapture(true)
+    , ui(new Ui::MainWindow), camera(0, this)
 {
     ui->setupUi(this);
     initCameras();
@@ -74,10 +74,8 @@ void MainWindow::cameraState(int cameraId, int state) {
     } else if (state == 1) {
         if (cameraId == 0) {
             ui->cameraPushButton->setText(tr("start"));
-            cameraAutoCapture = true;
         } else {
             ui->cameraPushButton->setText(tr("start"));
-            cameraAutoCapture = true;
         }
         displayCapturedImage(cameraId);
     } else if (state == 2) {
@@ -101,8 +99,8 @@ void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
         if (cameraId == 0) {
             camera.takeImage();
         } else {
-            if (cameraAutoCapture) {
-                cameraAutoCapture = false;
+            if (camera.getAutoCapture()) {
+                camera.setAutoCapture(false);
                 camera.takeImage();
             }
         }
@@ -112,16 +110,16 @@ void MainWindow::cameraReadyForCapture(int cameraId, bool ready) {
 
 void MainWindow::displayViewfinder(int cameraId) {
     if (cameraId == 0) {
-        ui->cameratackedWidget->setCurrentIndex(0);
+        ui->cameraStackedWidget->setCurrentIndex(0);
     } else {
-        ui->cameratackedWidget->setCurrentIndex(0);
+        ui->cameraStackedWidget->setCurrentIndex(0);
     }
 }
 
 void MainWindow::displayCapturedImage(int cameraId) {
     if (cameraId == 0) {
-        ui->cameratackedWidget->setCurrentIndex(1);
+        ui->cameraStackedWidget->setCurrentIndex(1);
     } else {
-        ui->cameratackedWidget->setCurrentIndex(1);
+        ui->cameraStackedWidget->setCurrentIndex(1);
     }
 }

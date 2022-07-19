@@ -35,7 +35,5 @@ private:
 private:
     Ui::MainWindow *ui;
     CPCamera camera;
-
-    bool cameraAutoCapture;
 };
 #endif // MAINWINDOW_H

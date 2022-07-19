@@ -48,7 +48,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QStackedWidget" name="cameratackedWidget">
+          <widget class="QStackedWidget" name="cameraStackedWidget">
            <widget class="QWidget" name="page">
             <widget class="CPCameraViewfinder" name="cameraViewfinder">
              <property name="geometry">
@@ -137,7 +137,7 @@
   <customwidget>
    <class>CPCameraViewfinder</class>
    <extends>QLabel</extends>
-   <header location="global">../cpcameraviewfinder.h</header>
+   <header>cpcameraviewfinder.h</header>
   </customwidget>
  </customwidgets>
  <resources>
