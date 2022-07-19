@@ -3,11 +3,7 @@
 
 #include <QCameraViewfinder>
 
-#if defined(CPMULTICAMERA_LIBRARY)
-#  define CPMULTICAMERA_EXPORT Q_DECL_EXPORT
-#else
-#  define CPMULTICAMERA_EXPORT
-#endif
+#include "cp-multi-camera_global.h"
 
 class CPMULTICAMERA_EXPORT CPCameraViewfinder : public QCameraViewfinder
 {
