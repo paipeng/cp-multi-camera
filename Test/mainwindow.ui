@@ -50,7 +50,7 @@
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <widget class="QWidget" name="page">
-            <widget class="CPCameraViewfinder" name="label_3">
+            <widget class="CPCameraViewfinder" name="cameraViewfinder">
              <property name="geometry">
               <rect>
                <x>3</x>
@@ -95,12 +95,12 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox"/>
+          <widget class="QComboBox" name="cameraComboBox"/>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="cameraPushButton">
            <property name="text">
-            <string>PushButton</string>
+            <string>camera</string>
            </property>
           </widget>
          </item>
@@ -143,5 +143,42 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cameraComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cameraChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cameraPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>startCamera()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>559</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>startCamera()</slot>
+  <slot>cameraChanged(int)</slot>
+ </slots>
 </ui>

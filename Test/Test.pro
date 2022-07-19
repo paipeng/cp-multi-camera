@@ -15,7 +15,8 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
-    ../cpcameraviewfinder.h
+    ../cpcameraviewfinder.h \
+    ../cpcamera.h
 
 FORMS += \
     mainwindow.ui
@@ -24,6 +25,9 @@ TRANSLATIONS += \
     Test_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
+
+
+INCLUDEPATH += $$PWD/../
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
