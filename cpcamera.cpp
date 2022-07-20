@@ -39,10 +39,11 @@ void CPCamera::setCamera(const QCameraInfo &cameraInfo, QCameraViewfinder *surfa
     updateLockStatus(m_camera->lockStatus(), QCamera::UserRequest);
     updateRecorderState(m_mediaRecorder->state());
 
+    m_imageCapture.data()->setCaptureDestination(QCameraImageCapture::CaptureToBuffer);
     qDebug() << "6";
     connect(m_imageCapture.data(), &QCameraImageCapture::readyForCaptureChanged, this, &CPCamera::readyForCapture);
     connect(m_imageCapture.data(), &QCameraImageCapture::imageCaptured, this, &CPCamera::processCapturedImage);
-    //connect(m_imageCapture.data(), &QCameraImageCapture::imageSaved, this, &Camera::imageSaved);
+    connect(m_imageCapture.data(), &QCameraImageCapture::imageSaved, this, &CPCamera::imageSaved);
     connect(m_imageCapture.data(), QOverload<int, QCameraImageCapture::Error, const QString &>::of(&QCameraImageCapture::error),
             this, &CPCamera::displayCaptureError);
 
