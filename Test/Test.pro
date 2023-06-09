@@ -40,4 +40,4 @@ RESOURCES += \
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-cp-multi-camera-Desktop_Qt_5_12_12_MSVC2017_64bit-Debug/debug -lcp-multi-camera
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-cp-multi-camera-Desktop_Qt_5_12_12_MSVC2017_64bit-Debug/debug -lcp-multi-camera
-else:unix: LIBS += -L$$PWD/libs/x64/
+else:unix: LIBS += -L$$PWD/libs/x64/ -lcp-multi-camera
